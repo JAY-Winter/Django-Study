@@ -10,8 +10,13 @@ def index(request):
     }
     return render(request, 'forums/index.html', context)
 
-def detail():
-    pass
+# 게시글 별 내용 확인
+def detail(request, pk):
+    forum = Forum.objects.get(pk=pk)
+    context = {
+        'forum' : forum,
+    }
+    return render(request, 'forums/detail.html', context)
 
 # 게시글 작성
 def create(request):

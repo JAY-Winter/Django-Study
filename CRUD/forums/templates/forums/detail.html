@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+<h1>세부 내용</h1>
+<hr>
+<h2>{{ forum.pk }} 번째 글</h2>
+<p> 제목 : {{ forum.title }}  </p>
+<p> 내용 : {{ forum.content }}</p>
+<p> 작성 시간 : {{ forum.created_at }}</p>
+<p> 수정 시간 : {{ forum.updated_at }}</p>
+</div>
+{% endblock content %}
