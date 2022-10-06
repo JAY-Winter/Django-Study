@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>INDEX</h1>
+<div>
+<h2>게시글 목록</h2>
+{% for forum in forums %}
+<p>제목 : {{ forum.title }}</p>
+<p>번호 : {{ forum.pk }} </p>
+<p>내용 : {{ forum.content }} </p>
+<hr>
+{% endfor %}
+</div>
 {% endblock content %}

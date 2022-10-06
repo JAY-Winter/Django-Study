@@ -1,9 +1,14 @@
 from django.shortcuts import redirect, render
 from .forms import ForumForm
+from .models import Forum
 
 # Create your views here.
 def index(request):
-    return render(request, 'forums/index.html')
+    forums = Forum.objects.all()
+    context = {
+        'forums' : forums,
+    }
+    return render(request, 'forums/index.html', context)
 
 def detail():
     pass
