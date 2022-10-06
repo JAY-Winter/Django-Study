@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>INDEX</h1>
+<hr>
+<div>
+    <h2><a href="{% url 'forums:create' %}">게시글 작성</h2></a>
+</div>
+<hr>
 <div>
 <h2>게시글 목록</h2>
 {% for forum in forums %}
