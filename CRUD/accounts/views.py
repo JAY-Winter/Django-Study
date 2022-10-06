@@ -25,6 +25,9 @@ def logout():
 
 @require_http_methods(['GET', 'POST'])
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('forums:index')
+
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
