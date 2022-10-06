@@ -1,6 +1,7 @@
 from django.db import reset_queries
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.decorators.http import require_http_methods, require_POST
 from .forms import CustomUserCreationForm
@@ -20,8 +21,10 @@ def login(request):
     }
     return render(request, 'accounts/login.html', context)
 
-def logout():
-    pass
+def logout(request):
+    if request.user.is_authenticated:
+        auth_logout(request)
+    return redirect('forums:index')
 
 @require_http_methods(['GET', 'POST'])
 def signup(request):
