@@ -3,8 +3,8 @@
 
 <h1>Sign Up</h1>
 <form action="{% url 'accounts:signup' %}" method="POST">
-    {{ form.as_p}}
     {% csrf_token %}
+    {{ form.as_p}}
     <input type="submit" value="가입하기">
 </form>
 
