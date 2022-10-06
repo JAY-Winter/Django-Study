@@ -2,4 +2,10 @@
 {% block content %}
 
 <h1>Sign Up</h1>
+<form action="{% url 'accounts:signup' %}" method="POST">
+    {{ form.as_p}}
+    {% csrf_token %}
+    <input type="submit" value="가입하기">
+</form>
+
 {% endblock content %}
