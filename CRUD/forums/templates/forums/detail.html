@@ -13,6 +13,9 @@
     <a href="{% url 'forums:update' forum.pk %}">수정하깅</a>
 </div>
 <div class="btn btn-danger">
-    <a href="{% url 'forums:delete' forum.pk %}">삭제하깅</a>
+    <form action="{% url 'forums:delete' forum.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="삭제하깅">
+    </form>
 </div>
 {% endblock content %}
