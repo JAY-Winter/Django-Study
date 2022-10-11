@@ -12,4 +12,7 @@
 <div>
     <a href="{% url 'forums:update' forum.pk %}">수정하깅</a>
 </div>
+<div class="btn btn-danger">
+    <a href="{% url 'forums:delete' forum.pk %}">삭제하깅</a>
+</div>
 {% endblock content %}

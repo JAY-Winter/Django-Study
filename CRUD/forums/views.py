@@ -52,5 +52,9 @@ def update(request, pk):
     }
     return render(request, 'forums/update.html', context)
 
-def delete():
-    pass
+# 게시글 삭제
+def delete(request, pk):
+    if request.user.is_authenticated:
+        forum = Forum.objects.get(pk=pk)
+        forum.delete()
+    return redirect('forums:index')
