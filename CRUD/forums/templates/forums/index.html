@@ -4,13 +4,13 @@
 <hr>
 <h3><a href="{% url 'accounts:signup' %}">SignUP</a></h3>
 <hr>
-<div>
-    <h2><a href="{% url 'accounts:login'%}">Login</a></h2>
-</div>
-<hr>
-<div>
+{% if request.user.is_authenticated %}
+    <h1>{{ user }}</h1>
     <h2><a href="{% url 'accounts:logout'%}">Logout</a></h2>
-</div>
+{% else %}
+    <h1>로그인을 하세요</h1>
+    <h2><a href="{% url 'accounts:login'%}">Login</a></h2>
+{% endif %}
 <hr>
 <div>
     <h2><a href="{% url 'forums:create' %}">게시글 작성</h2></a>
