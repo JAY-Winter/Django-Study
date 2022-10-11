@@ -1,3 +1,4 @@
+from traceback import format_exc
 from django.shortcuts import redirect, render
 from .forms import ForumForm
 from .models import Forum
@@ -34,9 +35,22 @@ def create(request):
         'form' : form,
     }
     return render(request, 'forums/create.html', context)
-
-def update():
-    pass
+    
+# 게시글 수정
+def update(request, pk):
+    forum = Forum.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ForumForm(request.POST, instance=forum)
+        if form.is_valid():
+            form.save()
+            return redirect('forums:detail', forum.pk)
+    else:
+        form = ForumForm(instance=forum)
+    context = {
+        'form' : form,
+        'forum': forum,
+    }
+    return render(request, 'forums/update.html', context)
 
 def delete():
     pass

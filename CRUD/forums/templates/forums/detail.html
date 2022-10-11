@@ -9,4 +9,7 @@
 <p> 작성 시간 : {{ forum.created_at }}</p>
 <p> 수정 시간 : {{ forum.updated_at }}</p>
 </div>
+<div>
+    <a href="{% url 'forums:update' forum.pk %}">수정하깅</a>
+</div>
 {% endblock content %}
