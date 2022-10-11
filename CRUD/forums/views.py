@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_POST, require_safe
 
 from .forms import ForumForm
@@ -23,6 +24,7 @@ def detail(request, pk):
     return render(request, 'forums/detail.html', context)
 
 # 게시글 작성
+@login_required
 @require_http_methods(['GET', 'POST'])
 def create(request):
     # 게시글 작성 버튼을 눌렀을 때
@@ -41,6 +43,7 @@ def create(request):
     return render(request, 'forums/create.html', context)
     
 # 게시글 수정
+@login_required
 @require_http_methods(['GET', 'POST'])
 def update(request, pk):
     forum = Forum.objects.get(pk=pk)
